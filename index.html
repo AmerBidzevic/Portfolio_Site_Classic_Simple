@@ -3,21 +3,74 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Portfolio of Amer Bidžević, an IT graduate and full-stack developer from Sarajevo." />
+    <meta name="description" content="Amer Bidžević is a full-stack developer in Sarajevo working across web, mobile, backend, security, and machine learning." />
+    <meta name="author" content="Amer Bidžević" />
     <meta name="robots" content="index, follow" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta name="theme-color" content="#f3f0e8" />
-    <meta property="og:title" content="Amer Bidžević — Full-stack developer" />
+    <meta property="og:title" content="Amer Bidžević | Full-Stack Developer in Sarajevo" />
     <meta property="og:description" content="Projects in full-stack development, mobile, security, and machine learning." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://amerbidzevic.dev/" />
     <meta property="og:locale" content="en_US" />
-    <meta name="twitter:card" content="summary" />
-    <title>Amer Bidžević — Full-stack developer</title>
+    <meta property="og:site_name" content="Amer Bidžević" />
+    <meta property="og:image" content="https://amerbidzevic.dev/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Amer Bidžević, full-stack developer in Sarajevo" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Amer Bidžević | Full-Stack Developer in Sarajevo" />
+    <meta name="twitter:description" content="Projects in full-stack development, mobile, security, and machine learning." />
+    <meta name="twitter:image" content="https://amerbidzevic.dev/og-image.png" />
+    <title>Amer Bidžević | Full-Stack Developer in Sarajevo</title>
     <link rel="canonical" href="https://amerbidzevic.dev/" />
     <link rel="icon" href="./favicon.svg?v=2" type="image/svg+xml" />
     <link rel="manifest" href="./site.webmanifest" />
     <link rel="stylesheet" href="./styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        "@id": "https://amerbidzevic.dev/#profile-page",
+        "url": "https://amerbidzevic.dev/",
+        "name": "Amer Bidžević | Full-Stack Developer in Sarajevo",
+        "dateCreated": "2026-07-16",
+        "dateModified": "2026-07-17",
+        "mainEntity": {
+          "@type": "Person",
+          "@id": "https://amerbidzevic.dev/#amer-bidzevic",
+          "name": "Amer Bidžević",
+          "alternateName": ["Amer Bidzevic", "AmerBidzevic"],
+          "url": "https://amerbidzevic.dev/",
+          "email": "mailto:bdzamer@gmail.com",
+          "jobTitle": "Full-Stack Developer",
+          "description": "IT graduate and full-stack developer working across web, mobile, backend, security, and machine learning.",
+          "homeLocation": {
+            "@type": "Place",
+            "name": "Sarajevo, Bosnia and Herzegovina"
+          },
+          "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "International Burch University",
+            "url": "https://www.ibu.edu.ba/"
+          },
+          "sameAs": [
+            "https://github.com/AmerBidzevic",
+            "https://www.linkedin.com/in/amer-bidzevic-8a1655271/"
+          ],
+          "knowsAbout": [
+            "Full-stack development",
+            "React",
+            "React Native",
+            "Spring Boot",
+            "Flask",
+            "PostgreSQL",
+            "Application security",
+            "Machine learning"
+          ]
+        }
+      }
+    </script>
     <script src="./script.js" defer></script>
   </head>
   <body>
@@ -167,18 +220,25 @@
           </article>
 
           <article class="case-study reveal">
-            <div class="case-meta"><span>MOBILE / LOCATION-AWARE PRODUCT</span><span>2026</span></div>
-            <div class="case-mini-visual place-visual" aria-hidden="true"><div class="map-grid"><i></i><i></i><i></i><span></span></div><div class="place-card"><small>BEST MATCH NEARBY</small><strong>Coffee · 8 min</strong><span>Budget ✓ &nbsp; Distance ✓</span></div></div>
-            <h3>BiteMe Sarajevo</h3>
-            <p>I built a mobile app that ranks coffee and food options in Sarajevo using budget, distance, travel mode, preferences, and the user’s current location.</p>
-            <div class="tag-list" aria-label="Technologies"><span>TypeScript</span><span>Expo</span><span>React Native</span><span>Location APIs</span><span>OpenStreetMap</span></div>
-            <a class="text-link" href="https://github.com/AmerBidzevic/BiteMe-Sarajevo" target="_blank" rel="noreferrer">View repository <span aria-hidden="true">↗</span></a>
+            <div class="case-meta"><span>INTERNSHIP / INTERNAL OPERATIONS</span><span>2025</span></div>
+            <div class="case-mini-visual workforce-visual" aria-hidden="true">
+              <div class="workforce-clients">
+                <div><small>MANAGER WEB</small><strong>Approvals</strong><span>React</span></div>
+                <div><small>EMPLOYEE MOBILE</small><strong>Check-in</strong><span>React Native</span></div>
+              </div>
+              <div class="workforce-api"><small>SPRING BOOT API</small><strong>JWT + RBAC</strong><span>Attendance · Records · Reports</span></div>
+              <div class="workforce-db"><i></i><span>POSTGRESQL</span></div>
+            </div>
+            <h3>Workforce Management</h3>
+            <p>During my internship at Comp-IT, I worked on an internal workforce platform covering attendance, employee records, approvals, contracts, and reporting across web and mobile.</p>
+            <div class="tag-list" aria-label="Technologies"><span>Java</span><span>Spring Boot</span><span>React</span><span>React Native</span><span>PostgreSQL</span><span>JWT</span></div>
+            <p class="private-note">Private internship project. I can discuss my contribution and the system architecture in an interview.</p>
           </article>
         </div>
 
         <div class="more-work reveal">
           <p>More projects</p>
-          <div class="project-row"><span>Workforce Management System</span><small>Spring Boot · React · React Native · PostgreSQL · JWT</small><b>PRIVATE</b></div>
+          <a href="https://github.com/AmerBidzevic/BiteMe-Sarajevo" target="_blank" rel="noreferrer"><span>BiteMe Sarajevo</span><small>Expo · React Native · Location APIs · OpenStreetMap</small><b>↗</b></a>
           <a href="https://github.com/AmerBidzevic/Web-Project" target="_blank" rel="noreferrer"><span>Respawn Shop</span><small>PHP · FlightPHP · MySQL · REST API</small><b>↗</b></a>
           <a href="https://github.com/muhamedsubasic/ShungiteX-Banking-App" target="_blank" rel="noreferrer"><span>ShungiteX Banking</span><small>Kotlin · Jetpack Compose · SQLite</small><b>↗</b></a>
           <a href="https://github.com/AmerBidzevic/Flappy-Bird-Rust" target="_blank" rel="noreferrer"><span>Flappy Bird / Bevy</span><small>Rust · ECS · Game systems</small><b>↗</b></a>
