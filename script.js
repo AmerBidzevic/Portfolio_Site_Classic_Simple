@@ -20,9 +20,9 @@ root.classList.add("motion-ready")
 
 function setTheme(theme) {
   root.dataset.theme = theme
-  document.querySelector('meta[name="theme-color"]')?.setAttribute("content", theme === "dark" ? "#101310" : "#efefe8")
+  document.querySelector('meta[name="theme-color"]')?.setAttribute("content", theme === "dark" ? "#121722" : "#f3f0e8")
   try {
-    localStorage.setItem("amer-portfolio-theme", theme)
+    localStorage.setItem("amer-portfolio-theme-v2", theme)
   } catch {
     // Persistence is optional when browser storage is unavailable.
   }
@@ -31,15 +31,14 @@ function setTheme(theme) {
 
 function getSavedTheme() {
   try {
-    return localStorage.getItem("amer-portfolio-theme")
+    return localStorage.getItem("amer-portfolio-theme-v2")
   } catch {
     return null
   }
 }
 
 const savedTheme = getSavedTheme()
-const systemTheme = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"
-setTheme(savedTheme || systemTheme)
+setTheme(savedTheme || "light")
 
 themeToggle?.addEventListener("click", () => {
   setTheme(root.dataset.theme === "dark" ? "light" : "dark")
@@ -64,6 +63,7 @@ function openCommands() {
   if (!dialog?.open) {
     if (typeof dialog.showModal === "function") dialog.showModal()
     else dialog.setAttribute("open", "")
+    dialog.querySelector("a")?.focus()
   }
 }
 
@@ -85,6 +85,18 @@ document.addEventListener("keydown", event => {
   if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
     event.preventDefault()
     dialog.open ? closeCommands() : openCommands()
+    return
+  }
+
+  if (dialog?.open && !event.ctrlKey && !event.metaKey && !event.altKey) {
+    const key = event.key.toLowerCase()
+    const command = [...dialog.querySelectorAll("[data-shortcut]")]
+      .find(link => link.dataset.shortcut === key)
+    if (command) {
+      event.preventDefault()
+      command.click()
+      closeCommands()
+    }
   }
 })
 

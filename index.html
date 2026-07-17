@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Amer Bidžević is a full-stack developer in Sarajevo building reliable web, mobile, and backend systems." />
     <meta name="robots" content="index, follow" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <meta name="theme-color" content="#0b0d0c" />
+    <meta name="theme-color" content="#f3f0e8" />
     <meta property="og:title" content="Amer Bidžević — Full-stack developer" />
     <meta property="og:description" content="Selected full-stack, mobile, and systems work by Amer Bidžević." />
     <meta property="og:type" content="website" />
@@ -225,13 +225,13 @@
     <dialog class="command-dialog" id="command-dialog" aria-labelledby="command-title">
       <div class="command-head"><span id="command-title">Quick access</span><button id="command-close" type="button" aria-label="Close quick access">ESC</button></div>
       <div class="command-list">
-        <a href="#work"><span><b>01</b> View selected work</span><kbd>W</kbd></a>
-        <a href="#profile"><span><b>02</b> Read profile</span><kbd>P</kbd></a>
-        <a href="mailto:bdzamer@gmail.com"><span><b>03</b> Send an email</span><kbd>E</kbd></a>
-        <a href="./Amer_Bidzevic_CV.pdf" download="Amer_Bidzevic_CV.pdf"><span><b>04</b> Download CV</span><kbd>C</kbd></a>
-        <a href="https://github.com/AmerBidzevic" target="_blank" rel="noreferrer"><span><b>05</b> Open GitHub</span><kbd>G</kbd></a>
+        <a href="#work" data-shortcut="w" aria-keyshortcuts="W"><span><b>01</b> View selected work</span><kbd>W</kbd></a>
+        <a href="#profile" data-shortcut="p" aria-keyshortcuts="P"><span><b>02</b> Read profile</span><kbd>P</kbd></a>
+        <a href="mailto:bdzamer@gmail.com" data-shortcut="e" aria-keyshortcuts="E"><span><b>03</b> Send an email</span><kbd>E</kbd></a>
+        <a href="./Amer_Bidzevic_CV.pdf" download="Amer_Bidzevic_CV.pdf" data-shortcut="c" aria-keyshortcuts="C"><span><b>04</b> Download CV</span><kbd>C</kbd></a>
+        <a href="https://github.com/AmerBidzevic" target="_blank" rel="noreferrer" data-shortcut="g" aria-keyshortcuts="G"><span><b>05</b> Open GitHub</span><kbd>G</kbd></a>
       </div>
-      <p class="command-hint">Navigate with tab · Enter to select · Esc to close</p>
+      <p class="command-hint">Press a letter · Tab + Enter to select · Esc to close</p>
     </dialog>
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
   </body>
