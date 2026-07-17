@@ -7,6 +7,18 @@ const commandOpen = document.querySelector("#command-open")
 const commandClose = document.querySelector("#command-close")
 const toast = document.querySelector("#toast")
 const scrollProgressBar = document.querySelector("#scroll-progress-bar")
+const tracePanel = document.querySelector(".trace-panel")
+const traceSteps = [...document.querySelectorAll("[data-trace-step]")]
+const traceDetail = document.querySelector("#trace-detail")
+const traceCount = document.querySelector("#trace-count")
+const traceDetailNumber = document.querySelector("#trace-detail-number")
+const traceKicker = document.querySelector("#trace-kicker")
+const traceDetailTitle = document.querySelector("#trace-detail-title")
+const traceDetailBody = document.querySelector("#trace-detail-body")
+const traceTags = document.querySelector("#trace-tags")
+const traceProofTitle = document.querySelector("#trace-proof-title")
+const traceProofMeta = document.querySelector("#trace-proof-meta")
+const traceProgressBar = document.querySelector("#trace-progress-bar")
 const scrollProgressAnimation = scrollProgressBar?.animate
   ? scrollProgressBar.animate(
       [{ transform: "scaleX(0)" }, { transform: "scaleX(1)" }],
@@ -81,6 +93,113 @@ dialog?.addEventListener("click", event => {
 })
 dialog?.querySelectorAll("a").forEach(link => link.addEventListener("click", closeCommands))
 
+const traceStages = [
+  {
+    kicker: "INPUT LAYER",
+    title: "Turn taste into signal.",
+    body: "Ratings and preferences are normalized into a reusable profile instead of being treated as isolated clicks.",
+    tags: ["React", "PostgreSQL"],
+    proof: "Structured taste profile",
+    meta: "Ratings / preferences / history"
+  },
+  {
+    kicker: "CANDIDATE SET",
+    title: "Narrow a 10,000-film catalog.",
+    body: "The service retrieves a relevant candidate set from MovieLens before the more expensive ranking signals are combined.",
+    tags: ["Flask", "MovieLens"],
+    proof: "10,000-film catalog",
+    meta: "Retrieval / filtering / service layer"
+  },
+  {
+    kicker: "MODEL LAYER",
+    title: "Combine four independent signals.",
+    body: "Collaborative filtering, TF-IDF similarity, semantic embeddings, and confidence scoring contribute to the final order.",
+    tags: ["scikit-learn", "Sentence Transformers"],
+    proof: "Hybrid ensemble",
+    meta: "Collaborative / content / semantic / confidence"
+  },
+  {
+    kicker: "OUTPUT LAYER",
+    title: "Return reasons, not just scores.",
+    body: "Ranked results include confidence and explainable signals so a recommendation communicates why it belongs on the list.",
+    tags: ["Confidence", "Explainability"],
+    proof: "Evaluated recommendation flow",
+    meta: "Ranked result / reason / score"
+  }
+]
+
+let activeTraceStage = 0
+
+function updateTraceStage(index, moveFocus = false) {
+  const nextIndex = (index + traceStages.length) % traceStages.length
+  const stage = traceStages[nextIndex]
+  const stageNumber = String(nextIndex + 1).padStart(2, "0")
+
+  traceSteps.forEach((step, stepIndex) => {
+    const isActive = stepIndex === nextIndex
+    step.classList.toggle("active", isActive)
+    step.setAttribute("aria-selected", String(isActive))
+    step.tabIndex = isActive ? 0 : -1
+  })
+
+  if (traceCount) traceCount.textContent = `PROJECT TRACE / ${stageNumber}`
+  if (traceDetailNumber) traceDetailNumber.textContent = stageNumber
+  if (traceKicker) traceKicker.textContent = stage.kicker
+  if (traceDetailTitle) traceDetailTitle.textContent = stage.title
+  if (traceDetailBody) traceDetailBody.textContent = stage.body
+  if (traceProofTitle) traceProofTitle.textContent = stage.proof
+  if (traceProofMeta) traceProofMeta.textContent = stage.meta
+  if (traceDetail) traceDetail.setAttribute("aria-labelledby", `trace-tab-${nextIndex + 1}`)
+  if (traceProgressBar) traceProgressBar.style.transform = `scaleX(${(nextIndex + 1) / traceStages.length})`
+
+  if (traceTags) {
+    const labels = stage.tags.map(tag => {
+      const label = document.createElement("span")
+      label.textContent = tag
+      return label
+    })
+    traceTags.replaceChildren(...labels)
+  }
+
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && traceDetail?.animate) {
+    traceDetail.animate(
+      [{ opacity: .35, transform: "translateY(8px)" }, { opacity: 1, transform: "none" }],
+      { duration: 260, easing: "cubic-bezier(.2,.7,.2,1)" }
+    )
+  }
+
+  activeTraceStage = nextIndex
+  if (moveFocus) traceSteps[nextIndex]?.focus()
+}
+
+traceSteps.forEach((step, index) => {
+  step.addEventListener("click", () => updateTraceStage(index))
+})
+
+tracePanel?.addEventListener("keydown", event => {
+  if (/^[1-4]$/.test(event.key)) {
+    event.preventDefault()
+    updateTraceStage(Number(event.key) - 1, true)
+    return
+  }
+
+  if (!event.target.matches("[role='tab']")) return
+
+  const destinations = {
+    ArrowRight: activeTraceStage + 1,
+    ArrowDown: activeTraceStage + 1,
+    ArrowLeft: activeTraceStage - 1,
+    ArrowUp: activeTraceStage - 1,
+    Home: 0,
+    End: traceStages.length - 1
+  }
+
+  if (event.key in destinations) {
+    event.preventDefault()
+    updateTraceStage(destinations[event.key], true)
+  }
+})
+
 document.addEventListener("keydown", event => {
   if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
     event.preventDefault()
@@ -135,11 +254,6 @@ if (reduceMotion || !("IntersectionObserver" in window)) {
   reveals.forEach(element => observer.observe(element))
 }
 
-window.addEventListener("load", () => {
-  const navigation = performance.getEntriesByType("navigation")[0]
-  const runtime = document.querySelector("#runtime-value")
-  if (navigation && runtime) runtime.textContent = `STATIC / ${Math.round(navigation.duration)}MS`
-}, { once: true })
 
 document.querySelector("#current-year").textContent = new Date().getFullYear()
 

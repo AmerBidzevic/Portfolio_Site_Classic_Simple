@@ -65,26 +65,49 @@
           </div>
         </div>
 
-        <aside class="system-card reveal" aria-label="Developer system overview">
-          <div class="system-topline">
-            <span>BUILD PROFILE / 01</span>
-            <span class="system-state"><i></i> ONLINE</span>
+        <aside class="trace-panel reveal" aria-labelledby="trace-title">
+          <header class="trace-head">
+            <div><span id="trace-count">PROJECT TRACE / 01</span><strong id="trace-title">PickMyFlick request anatomy</strong></div>
+            <span>INTERACTIVE / KEYS 1–4</span>
+          </header>
+
+          <div class="trace-layout">
+            <div class="trace-steps" role="tablist" aria-label="Recommendation request stages">
+              <button class="trace-step active" type="button" role="tab" id="trace-tab-1" aria-selected="true" aria-controls="trace-detail" tabindex="0" data-trace-step="0">
+                <small>01</small><strong>Taste profile</strong><span>Ratings + preferences</span>
+              </button>
+              <button class="trace-step" type="button" role="tab" id="trace-tab-2" aria-selected="false" aria-controls="trace-detail" tabindex="-1" data-trace-step="1">
+                <small>02</small><strong>Candidate retrieval</strong><span>MovieLens catalog</span>
+              </button>
+              <button class="trace-step" type="button" role="tab" id="trace-tab-3" aria-selected="false" aria-controls="trace-detail" tabindex="-1" data-trace-step="2">
+                <small>03</small><strong>Hybrid ranking</strong><span>Four model signals</span>
+              </button>
+              <button class="trace-step" type="button" role="tab" id="trace-tab-4" aria-selected="false" aria-controls="trace-detail" tabindex="-1" data-trace-step="3">
+                <small>04</small><strong>Explained result</strong><span>Reason + confidence</span>
+              </button>
+            </div>
+
+            <section class="trace-detail" id="trace-detail" role="tabpanel" aria-labelledby="trace-tab-1" aria-live="polite">
+              <span class="trace-detail-number" id="trace-detail-number" aria-hidden="true">01</span>
+              <div class="trace-detail-copy">
+                <p class="trace-kicker" id="trace-kicker">INPUT LAYER</p>
+                <h3 id="trace-detail-title">Turn taste into signal.</h3>
+                <p id="trace-detail-body">Ratings and preferences are normalized into a reusable profile instead of being treated as isolated clicks.</p>
+                <div class="trace-tags" id="trace-tags"><span>React</span><span>PostgreSQL</span></div>
+              </div>
+              <div class="trace-proof">
+                <span>EVIDENCE</span>
+                <strong id="trace-proof-title">Structured taste profile</strong>
+                <small id="trace-proof-meta">Ratings / preferences / history</small>
+              </div>
+            </section>
           </div>
-          <div class="architecture" aria-label="Full-stack architecture: interface to API, authentication, and database">
-            <div class="arch-node arch-interface"><small>01</small><strong>INTERFACE</strong><span>React / Native</span></div>
-            <span class="arch-line line-one" aria-hidden="true"></span>
-            <div class="arch-node arch-api"><small>02</small><strong>SERVICES</strong><span>Flask / Spring / Express</span></div>
-            <span class="arch-line line-two" aria-hidden="true"></span>
-            <div class="arch-node arch-auth"><small>03</small><strong>ACCESS</strong><span>JWT / OAuth / MFA</span></div>
-            <span class="arch-line line-three" aria-hidden="true"></span>
-            <div class="arch-node arch-data"><small>04</small><strong>DATA + ML</strong><span>SQL / hybrid models</span></div>
-          </div>
-          <div class="system-metrics">
-            <div><small>DISCIPLINE</small><strong>End-to-end</strong></div>
-            <div><small>FOCUS</small><strong>Security + ML</strong></div>
-            <div><small>DELIVERY</small><strong>Web + mobile</strong></div>
-          </div>
-          <div class="runtime-line"><span>PORTFOLIO.RUNTIME</span><strong id="runtime-value">STATIC / READY</strong></div>
+
+          <footer class="trace-footer">
+            <span>PRIVATE SDP / TECHNICAL WALKTHROUGH</span>
+            <div class="trace-progress" aria-hidden="true"><i id="trace-progress-bar"></i></div>
+            <span>ARROWS OR 1–4</span>
+          </footer>
         </aside>
 
         <div class="hero-index reveal" aria-label="Profile highlights">
