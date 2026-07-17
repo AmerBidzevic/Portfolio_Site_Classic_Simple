@@ -95,36 +95,36 @@ dialog?.querySelectorAll("a").forEach(link => link.addEventListener("click", clo
 
 const traceStages = [
   {
-    kicker: "INPUT LAYER",
-    title: "Turn taste into signal.",
-    body: "Ratings and preferences are normalized into a reusable profile instead of being treated as isolated clicks.",
+    kicker: "USER PROFILE",
+    title: "Save ratings and preferences.",
+    body: "The app stores ratings and preferences in PostgreSQL and uses them to build a profile for later recommendations.",
     tags: ["React", "PostgreSQL"],
-    proof: "Structured taste profile",
+    proof: "User profile in PostgreSQL",
     meta: "Ratings / preferences / history"
   },
   {
-    kicker: "CANDIDATE SET",
-    title: "Narrow a 10,000-film catalog.",
-    body: "The service retrieves a relevant candidate set from MovieLens before the more expensive ranking signals are combined.",
+    kicker: "CATALOG SEARCH",
+    title: "Find movies worth ranking.",
+    body: "Flask pulls a candidate set from the 10,000-title MovieLens catalog before running the recommendation models.",
     tags: ["Flask", "MovieLens"],
-    proof: "10,000-film catalog",
-    meta: "Retrieval / filtering / service layer"
+    proof: "Candidate set from 10,000 titles",
+    meta: "Flask / MovieLens"
   },
   {
-    kicker: "MODEL LAYER",
-    title: "Combine four independent signals.",
-    body: "Collaborative filtering, TF-IDF similarity, semantic embeddings, and confidence scoring contribute to the final order.",
+    kicker: "RECOMMENDATION MODEL",
+    title: "Run the four recommendation signals.",
+    body: "The ranker combines collaborative filtering, TF-IDF, Sentence Transformer embeddings, and a confidence score.",
     tags: ["scikit-learn", "Sentence Transformers"],
-    proof: "Hybrid ensemble",
+    proof: "Four-signal hybrid ranker",
     meta: "Collaborative / content / semantic / confidence"
   },
   {
-    kicker: "OUTPUT LAYER",
-    title: "Return reasons, not just scores.",
-    body: "Ranked results include confidence and explainable signals so a recommendation communicates why it belongs on the list.",
+    kicker: "API RESPONSE",
+    title: "Send ranked movies back to the app.",
+    body: "The API returns the movie list with match information and the signals that affected each result.",
     tags: ["Confidence", "Explainability"],
-    proof: "Evaluated recommendation flow",
-    meta: "Ranked result / reason / score"
+    proof: "Ranked response with explanation",
+    meta: "Movie / score / contributing signals"
   }
 ]
 

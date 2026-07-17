@@ -1,8 +1,8 @@
 # Amer Bidzevic — Portfolio
 
-Personal portfolio for Amer Bidzevic, a full-stack developer based in Sarajevo.
+Source code for my portfolio at [amerbidzevic.dev](https://amerbidzevic.dev).
 
-The site presents selected web, mobile, backend, systems, and applied machine-learning work. It is built with plain HTML, CSS, and JavaScript and has no runtime dependencies or build step.
+I built it with plain HTML, CSS, and JavaScript. GitHub Pages hosts it, and there is no build step.
 
 ## Run locally
 
@@ -21,4 +21,4 @@ Then open `http://127.0.0.1:4173`.
 - `script.js` handles navigation, theme preferences, keyboard shortcuts, and motion.
 - `Amer_Bidzevic_CV.pdf` is the downloadable CV.
 
-The production site is published with GitHub Pages at [amerbidzevic.dev](https://amerbidzevic.dev).
+The live site is published with GitHub Pages.
